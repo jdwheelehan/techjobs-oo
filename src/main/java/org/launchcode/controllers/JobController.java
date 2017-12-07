@@ -1,5 +1,6 @@
 package org.launchcode.controllers;
 
+import org.launchcode.models.Employer;
 import org.launchcode.models.Job;
 import org.launchcode.models.forms.JobForm;
 import org.launchcode.models.data.JobData;
@@ -45,7 +46,14 @@ public class JobController {
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
-        Job newJob = new Job(jobForm.getName(), jobForm.getEmployer(), jobForm.getLocation(), jobForm.getPositionType(),
+        Employer jobEmployerId = jobData.getEmployers().findById(jobForm.getEmployerId());
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Job");
+            return "new-job";
+        }
+
+        Job newJob = new Job(jobForm.getName(), jobEmployerId,
+                jobForm.getLocation(), jobForm.getPositionType(),
                 jobForm.getCoreCompetency());
         jobData.add(newJob);
 
