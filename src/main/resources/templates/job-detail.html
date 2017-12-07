@@ -7,8 +7,15 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
+    <ul>
+        <li th:text="'Name - - '+${jobs.name}"></li>
+        <li th:text="'Employer - - '+${jobs.employer}"></li>
+        <li th:text="'Location - - '+${jobs.location}"></li>
+        <li th:text="'Position Type - - '+${jobs.positionType}"></li>
+        <li th:text="'Core Competency - - '+${jobs.coreCompetency}"></li>
+    </ul>
 
-    <!-- // TODO #2 - display the job fields, one per row -->
+    <!-- // TODO #2 - display the job fields, one per row DONE-->
 
 </div>
 
